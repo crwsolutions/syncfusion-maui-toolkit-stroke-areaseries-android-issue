@@ -1,0 +1,8 @@
+<maui:MauiWinUIApplication
+    x:Class="syncfusion_maui_toolkit_stroke_areaseries_android_issue.WinUI.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:maui="using:Microsoft.Maui"
+    xmlns:local="using:syncfusion_maui_toolkit_stroke_areaseries_android_issue.WinUI">
+
+</maui:MauiWinUIApplication>
