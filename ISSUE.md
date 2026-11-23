@@ -1,13 +1,18 @@
-# [SfCartesianChart] AreaSeries Stroke is not rendered on Android
+# [SfCartesianChart] AreaSeries Stroke is not rendered on Android when the Fill is a LinearGradientBrush
 
 ## Description
 
 The `Stroke` (line on top of the area) is not rendered on **Android** when using an
-`AreaSeries` in an `SfCartesianChart`. The same chart renders correctly on iOS and
-Windows, where the black stroke line is drawn over the gradient fill.
+`AreaSeries` in an `SfCartesianChart` whose `Fill` is a `LinearGradientBrush`.
+The same chart renders correctly on iOS and Windows, where the black stroke line is
+drawn over the gradient fill.
 
 On Android only the gradient fill is drawn — the stroke line is completely missing,
 even with a high `StrokeWidth`.
+
+**Workaround / trigger:** the problem only occurs when the `Fill` is a `LinearGradientBrush`.
+Using a solid color for the `Fill` instead, the `Stroke` **is** drawn correctly on Android
+as well. This points at the gradient fill path swallowing the stroke on the Android renderer.
 
 ## Reproduction
 
@@ -43,14 +48,17 @@ Minimal repro app included in this repository (`Syncfusion.Maui.Toolkit` 1.0.12,
 
 ## Expected behavior
 
-The `Stroke` line (black, `StrokeWidth="4"`) is drawn on top of the area fill on all platforms, as it is on iOS and Windows.
+The `Stroke` line (black, `StrokeWidth="4"`) is drawn on top of the area fill on all platforms, as it is on iOS and Windows — and on Android when a solid fill color is used.
 
 ## Actual behavior
 
 - **iOS / Windows:** the black stroke line is drawn correctly over the gradient fill.
 - **Android:** the stroke line is **not** drawn at all — only the gradient fill is visible.
 
-![iOS vs Windows vs Android comparison](screenshots/area-series-stroke.png)
+**With `LinearGradientBrush` fill (stroke missing on Android):**
+
+![Stroke missing with LinearGradientBrush](screenshots/area-series-stroke-gradient.png)
+
 
 ## Environment
 
